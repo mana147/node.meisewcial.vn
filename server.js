@@ -1,9 +1,10 @@
-var http = require('http');
-var server = http.createServer(function(req, res) {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    var message = 'It works!\n',
-        version = 'NodeJS ' + process.versions.node + '\n',
-        response = [message, version].join('\n');
-    res.end(response);
-});
-server.listen();
+// run server
+import app_express from './app_express/app_express.js';
+import {SERVER_CONFIG} from './config/cf.js';
+import { DEBUG } from './utils/log.js';
+
+// ====================== RUN ====================================
+app_express.listen(SERVER_CONFIG.PORT, () =>
+   DEBUG(`Example app listening on port 3000!`),
+);
+// ===============================================================
